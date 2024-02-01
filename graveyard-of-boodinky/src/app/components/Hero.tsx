@@ -50,18 +50,19 @@ const Hero = () => {
   return (
     <section
       style={{ pointerEvents: dragging ? "none" : undefined }}
-      className="overflow-hidden bg-slate-900 px-8 py-24 text-slate-50"
-    >
-      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 md:grid-cols-2 md:gap-8">
-        <div>
-        <Image
-        src="/images/Graveyardofboodinky.png" // Located at public/images/local-image.png
-        alt="Local Image"
-        width={640}
-        height={480}
-        layout="responsive"
-      />
-        </div>
+      className="overflow-hidden bg-slate-900 px-8 pb-6 text-slate-50"
+      >
+      <div>
+      <Image
+      src="/images/Graveyardofboodinky.png" // Located at public/images/local-image.png
+      alt="Local Image"
+      width={640}
+      height={480}
+      layout="responsive"
+    />  
+    </div>
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 md:grid-cols-2 md:gap-8">
+        
         <motion.div
           whileTap={{ scale: 0.985 }}
           className="relative h-[450px] w-[350px]"
@@ -97,7 +98,8 @@ const Hero = () => {
             setDragging={setDragging}
           />
         </motion.div>
-      </div>
+        </div>
+    
     </section>
   );
 };

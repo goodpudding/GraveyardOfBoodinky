@@ -7,49 +7,13 @@ import {
 } from "framer-motion";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Image from "next/image";
+import CardCarousel from "./CardCarousel";
 
 type ListOrderItem = "front" | "middle" | "back";
 
 const Hero = () => {
-  const dragProgress = useMotionValue(0);
-  const [order, setOrder] = useState<ListOrderItem[]>([
-    "front",
-    "middle",
-    "back",
-  ]);
-  const [dragging, setDragging] = useState(false);
-
-  const handleDragEnd = () => {
-    const x = dragProgress.get();
-    if (x <= -50) {
-      const orderCopy = [...order];
-      orderCopy.unshift(orderCopy.pop() as ListOrderItem);
-      setOrder(orderCopy);
-    }
-  };
-
-  useEffect(() => {
-    const FIVE_SECONDS = 5000;
-
-    // Automatically shuffle the list ever 5 seconds, so long
-    // as it isn't being dragged
-    const intervalRef = setInterval(() => {
-      const x = dragProgress.get();
-      if (x === 0) {
-        setOrder((pv) => {
-          const orderCopy = [...pv];
-          orderCopy.unshift(orderCopy.pop() as ListOrderItem);
-          return orderCopy;
-        });
-      }
-    }, FIVE_SECONDS);
-
-    return () => clearInterval(intervalRef);
-  }, []);
-
   return (
     <section
-      style={{ pointerEvents: dragging ? "none" : undefined }}
       className="overflow-hidden bg-slate-900 px-8 pb-6 text-slate-50"
       >
       <div>
@@ -61,44 +25,7 @@ const Hero = () => {
       layout="responsive"
     />  
     </div>
-        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 md:grid-cols-2 md:gap-8">
-        
-        <motion.div
-          whileTap={{ scale: 0.985 }}
-          className="relative h-[450px] w-[350px]"
-        >
-          <Card
-            imgUrl="/imgs/head-shots/7.jpg"
-            testimonial="I feel like I've learned as much from X as I did completing my masters. It's the first thing I read every morning."
-            author="Jenn F. - Marketing Director @ Square"
-            handleDragEnd={handleDragEnd}
-            dragProgress={dragProgress}
-            position={order[0]}
-            dragging={dragging}
-            setDragging={setDragging}
-          />
-          <Card
-            imgUrl="/imgs/head-shots/8.jpg"
-            testimonial="My boss thinks I know what I'm doing. Honestly, I just read this newsletter."
-            author="Adrian Y. - Product Marketing @ Meta"
-            handleDragEnd={handleDragEnd}
-            dragProgress={dragProgress}
-            position={order[1]}
-            dragging={dragging}
-            setDragging={setDragging}
-          />
-          <Card
-            imgUrl="/imgs/head-shots/9.jpg"
-            testimonial="Can not believe this is free. If X was $5,000 a month, it would be worth every penny. I plan to name my next child after X."
-            author="Devin R. - Growth Marketing Lead @ OpenAI"
-            handleDragEnd={handleDragEnd}
-            dragProgress={dragProgress}
-            position={order[2]}
-            dragging={dragging}
-            setDragging={setDragging}
-          />
-        </motion.div>
-        </div>
+     <CardCarousel/>   
     
     </section>
   );

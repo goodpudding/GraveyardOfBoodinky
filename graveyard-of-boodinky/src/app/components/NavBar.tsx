@@ -9,7 +9,7 @@ const NavBar = () => {
   return (
     <nav className="bg-slate-700 p-4 border-b-[1px] border-emerald-500 flex items-center justify-between relative">
       <NavLeft setIsOpen={setIsOpen} />
-      <NavRight />
+      {/* <NavRight /> */}
       <NavMenu isOpen={isOpen} />
     </nav>
   );
@@ -80,7 +80,7 @@ const WetPaintButton: React.FC<WetPaintButtonProps> = ({ text }) => {
   const drips = generateRandomDrips(3);
 
   return (
-    <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="group relative inline-flex items-center justify-center rounded bg-emerald-500 px-4 py-2 font-semibold text-white transition-colors hover:bg-violet-600">
+    <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="group relative inline-flex items-center justify-center rounded bg-emerald-500 px-4 py-2 font-semibold text-white transition-colors hover:bg-emerald-500">
       {text}
       {/* Render the drips */}
       {drips.map((drip, index) => (
@@ -123,7 +123,7 @@ const Drip: React.FC<DripProps> = ({ left, height, delay }) => {
     >
       <div
         style={{ height }}
-        className="w-2 rounded-b-full bg-violet-500 transition-colors group-hover:bg-violet-600"
+        className="w-2 rounded-b-full bg-emerald-500 transition-colors group-hover:bg-fuchsia-600"
       />
       <svg
         width="6"
@@ -138,13 +138,13 @@ const Drip: React.FC<DripProps> = ({ left, height, delay }) => {
             fillRule="evenodd"
             clipRule="evenodd"
             d="M5.4 0H0V5.4C0 2.41765 2.41766 0 5.4 0Z"
-            className="fill-violet-500 transition-colors group-hover:fill-violet-600"
+            className="fill-emerald-500 transition-colors group-hover:fill-fuchsia-600"
           />
           <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M5.4 0H0V5.4C0 2.41765 2.41766 0 5.4 0Z"
-            className="fill-violet-500 transition-colors group-hover:fill-violet-600"
+            className="fill-emerald-500 transition-colors group-hover:fill-fuchsia-600"
           />
         </g>
         <defs>
@@ -166,13 +166,13 @@ const Drip: React.FC<DripProps> = ({ left, height, delay }) => {
             fillRule="evenodd"
             clipRule="evenodd"
             d="M5.4 0H0V5.4C0 2.41765 2.41766 0 5.4 0Z"
-            className="fill-violet-500 transition-colors group-hover:fill-violet-600"
+            className="fill-emerald-500 transition-colors group-hover:fill-fuchsia-600"
           />
           <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M5.4 0H0V5.4C0 2.41765 2.41766 0 5.4 0Z"
-            className="fill-violet-500 transition-colors group-hover:fill-violet-600"
+            className="fill-emerald-500 transition-colors group-hover:fill-fuchsia-600"
           />
         </g>
         <defs>
@@ -193,7 +193,7 @@ const Drip: React.FC<DripProps> = ({ left, height, delay }) => {
           repeat: Infinity,
           repeatDelay: 2,
         }}
-        className="absolute top-full h-2 w-2 rounded-full bg-violet-500 transition-colors group-hover:bg-violet-600"
+        className="absolute top-full h-2 w-2 rounded-full bg-emerald-500 transition-colors group-hover:bg-fuchsia-600"
       />
     </motion.div>
   );
@@ -204,26 +204,26 @@ interface WetPaintButtonProps {
 }
 
 
-const NavRight = () => {
-  return (
-    <div className="flex items-center gap-4">
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-fuchsia-500 bg-clip-text text-transparent font-medium rounded-md whitespace-nowrap"
-      >
-        Sign in
-      </motion.button>
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-fuchsia-500 text-white font-medium rounded-md whitespace-nowrap"
-      >
-        Sign up
-      </motion.button>
-    </div>
-  );
-};
+// const NavRight = () => {
+//   return (
+//     <div className="flex items-center gap-4">
+//       <motion.button
+//         whileHover={{ scale: 1.05 }}
+//         whileTap={{ scale: 0.95 }}
+//         className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-fuchsia-500 bg-clip-text text-transparent font-medium rounded-md whitespace-nowrap"
+//       >
+//         Sign in
+//       </motion.button>
+//       <motion.button
+//         whileHover={{ scale: 1.05 }}
+//         whileTap={{ scale: 0.95 }}
+//         className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-fuchsia-500 text-white font-medium rounded-md whitespace-nowrap"
+//       >
+//         Sign up
+//       </motion.button>
+//     </div>
+//   );
+// };
 
 const NavMenu = ({ isOpen }: { isOpen: boolean }) => {
   return (
